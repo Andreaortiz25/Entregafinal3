@@ -1,0 +1,154 @@
+:root {
+    --rojo-increible: #d63031;
+    --naranja-increible: #fa8231;
+    --negro-antifaz: #2d3436;
+    --amarillo-logo: #f1c40f;
+    --blanco: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: #1a1a1a; 
+    background-image: radial-gradient(#333 1px, transparent 1px);
+    background-size: 20px 20px; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.entregable {
+    font-style: italic;
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--amarillo-logo); 
+    text-shadow: 4px 4px 0px #e74c3c, 8px 8px 0px #000; 
+    letter-spacing: -2px;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.tarjeta {
+    width: 180px;
+    background-color: var(--rojo-increible);
+    border-radius: 10px;
+    border: 4px solid var(--negro-antifaz);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--amarillo-logo);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tarjeta:hover img {
+    transform: scale(1.1);
+}
+
+.tarjeta h3 {
+    color: var(--amarillo-logo);
+    font-size: 15px;
+    margin: 10px 5px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.rating {
+    font-weight: 900;
+    color: var(--amarillo-logo);
+    margin-bottom: 10px;
+}
+
+.btn-salir {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, var(--rojo-increible), var(--naranja-increible));
+    color: var(--blanco);
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    border: 4px solid var(--amarillo-logo);
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.8);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.btn-salir:hover {
+    background: var(--amarillo-logo);
+    color: var(--negro-antifaz);
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(241, 196, 15, 1);
+}
+
+.card {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    transition: transform 0.3s ease;
+}
+
+.card img {
+    width: 250px;
+    border-radius: 15px;
+    border: 4px solid var(--amarillo-logo);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.nombre-autora {
+    margin-top: 12px;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--amarillo-logo);
+    text-shadow: 2px 2px 5px black;
+    letter-spacing: 1px;
+}
+
+
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    background-color: #111;
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .tarjeta { 
+        width: 140px; 
+    }
+
+    .entregable {
+        font-size: 2.5rem;
+    }
+}
