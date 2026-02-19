@@ -1,0 +1,103 @@
+:root {
+    --rojo-increible: #d63031;
+    --naranja-increible: #fa8231;
+    --negro-antifaz: #2d3436;
+    --amarillo-logo: #f1c40f;
+    --blanco: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: #1a1a1a; 
+    background-size: 20px 20px; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.titulo {
+    font-style: italic;
+    font-weight: 900;
+    font-size: 4rem;
+    color: var(--amarillo-logo); 
+    text-shadow: 4px 4px 0px #e74c3c, 8px 8px 0px #000; 
+    letter-spacing: -2px;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.contenedor {
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 90%;
+    width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 400px;
+    background-color: #272525;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    padding: 5px 10px;
+    background-color: var(--negro-antifaz);
+    margin-bottom: 20px;
+}
+
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    padding: 14px 18px;
+    font-size: 16px;
+    color: var(--blanco);
+    border-radius: 50px;
+}
+
+input::placeholder {
+    color: var(--naranja-increible);
+}
+
+button {
+    border: none;
+    background: var(--rojo-increible);
+    color: var(--amarillo-logo);
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-speed) ease;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+button:hover {
+    background: var(--amarillo-logo);
+    color: var(--rojo-increible);
+    transform: scale(1.05);
+}
+
+/* Botón volver */
+.volver {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    background: var(--naranja-increible);
+    color: var(--blanco);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: var(--transition-speed) ease;
+}
+
+.volver:hover {
+    background: var(--amarillo-logo);
+    color: var(--negro-antifaz);
+    transform: scale(1.05);
+}
