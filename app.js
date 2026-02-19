@@ -1,46 +1,61 @@
-const TOKEN = "eyJhdWQiOiI5NDM5ZDlhODRlODBkNWM4OTMzNjBkZmRlZmVmMzdmZCIsIm5iZiI6MTc3MTM5MTU5MC45ODcsInN1YiI6IjY5OTU0YTY2YmRiZmFkMGRhMTk1YTViZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ";
+async function buscar() {
 
-async function obtenerPeliculas() {
+  const texto = document.getElementById("inputBusqueda").value;
+  const contenedor = document.getElementById("resultado");
+
+  if (!texto) {
+    contenedor.innerHTML = "<p>Escribe algo para buscar.</p>";
+    return;
+  }
+
+  contenedor.innerHTML = "<p>Cargando...</p>";
+
   try {
+
     const respuesta = await fetch(
-      "https://api.themoviedb.org/3/movie/upcoming?language=es-ES&page=1",
-      {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`
-        }
-      }
+      `https://imdb.iamidiotareyoutoo.com/search?q=${texto}`
     );
 
     const datos = await respuesta.json();
-    mostrarPeliculas(datos.results);
+
+    if (!datos.description || datos.description.length === 0) {
+      contenedor.innerHTML = "<p>No se encontraron resultados.</p>";
+      return;
+    }
+
+    mostrarPeliculas(datos.description);
 
   } catch (error) {
     console.error(error);
-    document.getElementById("resultado").innerHTML =
-      "<p>Error al cargar películas.</p>";
+    contenedor.innerHTML =
+      "<p>Error al cargar las películas.</p>";
   }
 }
 
 function mostrarPeliculas(peliculas) {
+
   const contenedor = document.getElementById("resultado");
   contenedor.innerHTML = "";
 
   peliculas.forEach(pelicula => {
 
-    const imagen = pelicula.poster_path
-      ? `https://image.tmdb.org/t/p/w500${pelicula.poster_path}`
+    const imagen = pelicula["#IMG_POSTER"]
+      ? pelicula["#IMG_POSTER"]
       : "https://via.placeholder.com/300x450";
+
+    const titulo = pelicula["#TITLE"];
+    const year = pelicula["#YEAR"];
 
     const tarjeta = `
       <div class="tarjeta">
-        <img src="${imagen}" alt="${pelicula.title}">
-        <h3>${pelicula.title}</h3>
-        <p class="rating">⭐ ${pelicula.vote_average.toFixed(1)}</p>
+        <img src="${imagen}" alt="${titulo}">
+        <h3>${titulo}</h3>
+        <p><strong>Año:</strong> ${year}</p>
       </div>
     `;
 
     contenedor.innerHTML += tarjeta;
+
   });
 }
 
-document.addEventListener("DOMContentLoaded", obtenerPeliculas);
