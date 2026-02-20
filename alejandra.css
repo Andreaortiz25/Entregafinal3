@@ -101,3 +101,7 @@ button:hover {
     color: var(--negro-antifaz);
     transform: scale(1.05);
 }
+
+.card-resultado{
+    color: white;
+}
